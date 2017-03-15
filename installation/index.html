@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Learning Locker Documentation</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Documentation for Learning Locker, the open source learning record store.">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/tomorrow-night.css">
+    <link rel="stylesheet" href="../css/docs.css">
+
+    <script async="" src="//www.google-analytics.com/analytics.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-941797-7', 'learninglocker.net');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript">
+        function prettyCode() {
+            var tables = document.getElementsByTagName('table');
+            for (index = 0; index < tables.length; ++index) {
+                tables[index].className = "table table-default table-bordered";
+            }
+        }
+    </script>
+</head>
+
+
+    <body onload="prettyCode();">
+
+    <div class="docs-masthead">
+    <div class="container">
+        <img src="../images/logo-small.png" class="logo">
+        <nav class="docs-nav pull-right">
+            <a class="docs-nav-item" href="http://learninglocker.net">Website</a>
+            <a class="docs-nav-item" href="https://github.com/learninglocker">Github</a>
+            <a class="docs-nav-item" href="https://github.com/learninglocker/docs">Edit</a>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 docs-sidebar">
+                <div class="sidebar-title">
+                    <a href="../welcome">Getting Started</a>
+                </div>
+                <ul class="nav">
+                    <li><a href="../installation">Installing</a></li>
+                    <li><a href="../troubleshooting">Troubleshooting</a></li>
+                    <li><a href="../upgrading">Upgrading</a></li>
+                    <li><a href="../contribute">Contributing</a></li>
+                    <li><a href="../contributors">Contributors</a></li>
+                </ul>
+                <div class="sidebar-title">
+                    <a href="#">User Interfaces</a>
+                </div>
+                <ul class="nav">
+                    <li><a href="../administration">Administration</a></li>
+                    <li><a href="../reporting">Reports</a></li>
+                    <li><a href="../exporting">Exports</a></li>
+                </ul>
+                <div class="sidebar-title">
+                    <a href="../postman">HTTP Interfaces (APIs)</a>
+                </div>
+                <ul class="nav">
+                    <li><a href="../analytics_api">Analytics</a></li>
+                    <li><a href="../statements_api">Aggregation</a></li>
+                    <li><a href="../report_api">Reports</a></li>
+                    <li><a href="../exports_api">Exports</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-8 docs-main">
+                <h1 id="installation">Installation</h1>
+
+<h4 id="installation-steps">Installation steps</h4>
+
+<ol>
+  <li><a href="#requirements">Install the requirements</a></li>
+  <li><a href="#download-and-install">Download and Install LL</a></li>
+  <li><a href="#setup-mongodb">Setup Mongo</a></li>
+  <li><a href="#configuration">Configure LL</a></li>
+  <li><a href="#register-your-first-user">Register your first user</a></li>
+</ol>
+
+<h4 id="specific-installation-guides">Specific installation guides</h4>
+
+<ul>
+  <li><a href="https://github.com/davidpesce/learninglocker-v1-dev-env">CentOS 7.0 via Vagrant with Ansible</a> thanks to <a href="https://github.com/davidpesce">David Pesce</a> (via Github) - 2017-03-15</li>
+  <li><a href="https://gist.github.com/davidpesce/7d6e1b81594ecbc72311">CentOS 7.0</a> thanks to <a href="https://github.com/davidpesce">David Pesce</a> (via Gist) - 2017-02-17</li>
+  <li><a href="https://github.com/gomezgoiri/learninglocker-centos7">CentOS 7.0 with Ansible (and optionally Vagrant)</a> thanks to <a href="https://github.com/gomezgoiri">Aitor Gómez-Goiri</a> (via Github) - 2015-11-16</li>
+  <li><a href="https://github.com/LearningLocker/docs/issues/15">CentOS 7.0 with Docker</a> thanks to <a href="https://github.com/ajblum">Andrew Blum</a> (via Github) - 2015-05-15</li>
+  <li><a href="https://www.youtube.com/watch?v=51Dci7B49xA">Ubuntu 14 with AWS</a> thanks to <a href="https://www.youtube.com/channel/UCMum_tZBqqp2DM110UqyFyw">Kristin Anthony</a> (via Youtube) - 2016-10-09</li>
+  <li><a href="http://www.jmblog.org/blog/2015/02/03/learning-locker-vagrant">Ubuntu with Vagrant</a> thanks to <a href="http://www.jmblog.org">Jim Baker</a> (via blog post) - 2015-02-03</li>
+  <li><a href="http://www.jpablo128.com/how_to_install_learning_locker/">Ubuntu</a> thanks to <a href="https://twitter.com/jpablo128">J. Pablo Caballero</a> (via blog post in English and Español) - 2014-12-29</li>
+</ul>
+
+<p><em>Please refer to the <a href="#requirements">requirements</a> whilst using these guides, as their links to the requirements may be old.</em></p>
+
+<h4 id="additional-information">Additional information</h4>
+
+<ul>
+  <li><a href="#quirks">Quirks</a></li>
+  <li><a href="http://learninglocker.net/blog/load-balancing-learning-locker/">Load Balancing</a> - scaling Learning Locker.</li>
+  <li><a href="https://learninglocker.net/blog/learning-locker-v1-12/">Improving Speed</a> - reducing Mongo timeouts in Learning Locker.</li>
+</ul>
+
+<h2 id="requirements">Requirements</h2>
+<p>Learning Locker requires the components listed below. Learning Locker is built upon the excellent <a href="http://laravel.com">Laravel</a> PHP framework, so in addition to the components below, please see the <a href="http://laravel.com/docs/4.2#server-requirements">Laravel requirements</a>.</p>
+
+<ul>
+  <li><a href="http://php.net">PHP v5.5</a> - may also work on newer versions.</li>
+  <li><a href="http://mongodb.org">MongoDB v2.6.x</a> - we recommend v3.x - may also work on newer versions.</li>
+  <li><a href="https://github.com/mongodb/mongo-php-driver-legacy/releases">MongoDB PHP extension (latest version)</a>.</li>
+</ul>
+
+<h2 id="download-and-install">Download and Install</h2>
+<p>To download and install Learning Locker, you need to run the commands below.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git clone -b master git@github.com:LearningLocker/learninglocker.git learninglocker
+cd learninglocker
+php -r "readfile('https://getcomposer.org/installer');" | php
+php composer.phar install --no-interaction --no-dev
+</code></pre>
+</div>
+
+<h2 id="setup-mongodb">Setup MongoDB</h2>
+<p>Make sure you have MongoDB set up with your Mongo credentials added to <code class="highlighter-rouge">app/config/local/database.php</code> (you will need to create this file, see the example below - it will override default settings in <code class="highlighter-rouge">app/config/database.php</code>).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;?php
+return [
+    'connections' =&gt; [
+        'mongodb' =&gt; [
+            'driver'   =&gt; 'mongodb',
+            'host'     =&gt; 'localhost',
+            'port'     =&gt; 27017,
+            'username' =&gt; 'YOUR_DATABASE_USERNAME',
+            'password' =&gt; 'YOUR_DATABASE_PASSWORD',
+            'database' =&gt; 'YOUR_DATABASE_NAME'
+        ],
+    ]
+];
+</code></pre>
+</div>
+
+<p>Then run the command below.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>php artisan migrate
+</code></pre>
+</div>
+
+<h2 id="configuration">Configuration</h2>
+<p>The “app/config” directory contains the base configuration. By default the “app/config/local” directory will be used and overrides the base configuration. You should change the <a href="https://github.com/LearningLocker/learninglocker/issues/488">encryption key</a> in “app/config/local/app.php” (see the example below).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;?php
+return [
+    'key' =&gt; 'YOUR_SECRET_KEY'
+];
+</code></pre>
+</div>
+
+<p>If you would like invited users to recieve an email containing their invitation link, you will need to change your “app/config/local/mail.php” file (see the example below).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;?php
+return [
+    'pretend' =&gt; false,
+    'username' =&gt; 'YOUR_USERNAME',
+    'password' =&gt; 'YOUR_PASSWORD',
+    'host' =&gt; 'YOUR_SMTP_HOST',
+    'port' =&gt; 'YOUR_SMTP_PORT',
+    'from' =&gt; [
+        'address' =&gt; 'YOUR_EMAIL_ADDRESS',
+        'name' =&gt; 'YOUR_NAME'
+    ]
+];
+</code></pre>
+</div>
+
+<p>Learning Locker will need to be able read and write files so you need to change permissions for the <code class="highlighter-rouge">FS_LOCAL_ENDPOINT</code> which can be set in “.env.local.php” to override the defaults in “.env.php”. Assuming that the current user is the owner of the files please do something similar to this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo gpasswd -a www-data `id -g -n $USER`
+sudo find app/storage/ -type d -exec chmod 775 {} + &amp;&amp; sudo find app/storage/ -type f -exec chmod 664 {} +
+sudo find uploads/ -type d -exec chmod 775 {} + &amp;&amp; sudo find uploads/ -type f -exec chmod 664 {} +
+</code></pre>
+</div>
+
+<p>Other <a href="https://github.com/LearningLocker/learninglocker/blob/master/app/locker/repository/File/readme.md">file storage configuration options</a> are available as of <a href="https://github.com/LearningLocker/learninglocker/releases/tag/v1.9.0">v1.9.0</a>.</p>
+
+<h2 id="register-your-first-user">Register your first user</h2>
+<p>Go to <code class="highlighter-rouge">yoursite/register</code> and create the first user.</p>
+
+<ul>
+  <li>Your first user will become your instance’s super user. See <a href="../administration">adminstration</a> for more information.</li>
+  <li>If you’ve not setup emails, manually verify your email.
+    <ol>
+      <li>Click on “users” (left hand sidebar)</li>
+      <li>Click the grey verified button next to your user (it will turn green with a tick)</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="quirks">Quirks</h2>
+<ol>
+  <li>Depending on your set up, you may need to append “public” to your site URL e.g. “yoursite.com/public/”.</li>
+  <li>MongoDB doesn’t allow full stops (“.”) in keys. Therefore, we replace all full stops in keys with “&amp;46;” on incoming objects (such as statements) and the opposite on outgoing objects.</li>
+  <li>To host Learning Locker on a HTTPS site, please see the <a href="https://groups.google.com/forum/#!topic/learning-locker/3Y0VGYPV1d8">“Hosting Learning Locker on https:// site” thread</a>.</li>
+  <li>If you get a 404 error for the “/login” or “/register” page. Please see the <a href="https://groups.google.com/forum/#!topic/learning-locker/ULtoICNOKa0">“Installation Problem” thread</a>, you may also need to check the <a href="https://github.com/LearningLocker/learninglocker/issues/477">“Register your first user returns not found” issue</a>.</li>
+  <li>If Learning Locker can’t connect to MongoDB, please check out the <a href="https://groups.google.com/forum/#!topic/learning-locker/B_UX6opI9tg">“Windows install Failed to connect” thread</a>.</li>
+  <li>If you’d like to turn debugging information off, please check out the <a href="https://github.com/LearningLocker/learninglocker/issues/808">“Clockwork directory takes a few GB of space” issue</a>.</li>
+</ol>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="docs-footer">
+    <p>Learning Locker and the Squirrel logo are copyright HT2, 2014 | Learning Locker is licensed under GPL 3.0.</p>
+    <p>
+        <a href="#">Back to top</a>
+    </p>
+</footer>
+
+
+    </body>
+</html>

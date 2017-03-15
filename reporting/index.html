@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Learning Locker Documentation</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Documentation for Learning Locker, the open source learning record store.">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/tomorrow-night.css">
+    <link rel="stylesheet" href="../css/docs.css">
+
+    <script async="" src="//www.google-analytics.com/analytics.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-941797-7', 'learninglocker.net');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript">
+        function prettyCode() {
+            var tables = document.getElementsByTagName('table');
+            for (index = 0; index < tables.length; ++index) {
+                tables[index].className = "table table-default table-bordered";
+            }
+        }
+    </script>
+</head>
+
+
+    <body onload="prettyCode();">
+
+    <div class="docs-masthead">
+    <div class="container">
+        <img src="../images/logo-small.png" class="logo">
+        <nav class="docs-nav pull-right">
+            <a class="docs-nav-item" href="http://learninglocker.net">Website</a>
+            <a class="docs-nav-item" href="https://github.com/learninglocker">Github</a>
+            <a class="docs-nav-item" href="https://github.com/learninglocker/docs">Edit</a>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 docs-sidebar">
+                <div class="sidebar-title">
+                    <a href="../welcome">Getting Started</a>
+                </div>
+                <ul class="nav">
+                    <li><a href="../installation">Installing</a></li>
+                    <li><a href="../troubleshooting">Troubleshooting</a></li>
+                    <li><a href="../upgrading">Upgrading</a></li>
+                    <li><a href="../contribute">Contributing</a></li>
+                    <li><a href="../contributors">Contributors</a></li>
+                </ul>
+                <div class="sidebar-title">
+                    <a href="#">User Interfaces</a>
+                </div>
+                <ul class="nav">
+                    <li><a href="../administration">Administration</a></li>
+                    <li><a href="../reporting">Reports</a></li>
+                    <li><a href="../exporting">Exports</a></li>
+                </ul>
+                <div class="sidebar-title">
+                    <a href="../postman">HTTP Interfaces (APIs)</a>
+                </div>
+                <ul class="nav">
+                    <li><a href="../analytics_api">Analytics</a></li>
+                    <li><a href="../statements_api">Aggregation</a></li>
+                    <li><a href="../report_api">Reports</a></li>
+                    <li><a href="../exports_api">Exports</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-8 docs-main">
+                <h1 id="reporting">Reporting</h1>
+
+<p>Learning Locker provides a generic tool for filtering statements that we call “reporting”. This page documents everything you can do with the reporting tool. You can use the reporting tool by selecting an LRS from the “LRS List” (in the top right), then clicking “Reporting” on the menu (on the left).</p>
+
+<ul>
+  <li><a href="#create-a-report">Create a report</a></li>
+  <li><a href="#remove-a-report">Remove a report</a></li>
+  <li><a href="#edit-a-report">Edit a report</a>
+    <ul>
+      <li><a href="#filter-by-actor">Filter by actor (who)</a></li>
+      <li><a href="#filter-by-verb">Filter by verb (did)</a></li>
+      <li><a href="#filter-by-activity">Filter by activity (what)</a></li>
+      <li><a href="#filter-by-context">Filter by context (where)</a></li>
+      <li><a href="#filter-by-result">Filter by result (with result)</a></li>
+      <li><a href="#filter-by-date">Filter by date (when)</a></li>
+    </ul>
+  </li>
+  <li><a href="#view-statements-in-a-graph">View statements in a graph</a></li>
+  <li><a href="#view-statements-in-a-list">View statements in a list</a></li>
+</ul>
+
+<h2 id="create-a-report">Create a report</h2>
+<p>Click the (green) “Add” button. A new entry will appear in the list of reports, you can then <a href="#edit-a-report">edit</a> that report.</p>
+
+<h2 id="remove-a-report">Remove a report</h2>
+<p>Click the (red) “Delete” button next to the report. Then select “OK” in the message that pops up.</p>
+
+<h2 id="edit-a-report">Edit a report</h2>
+<p>Click the (blue) “Edit” button next to the report. From there you will be taken to a page where you can add filters to your report.</p>
+
+<h3 id="filter-by-actor">Filter by actor</h3>
+<p>This category lets you filter actors (people that did activities). Click the (grey) square that says “Who”. You can then add and remove actors from the list that appears below.</p>
+
+<h4 id="adding-an-actor">Adding an actor</h4>
+<p>Click the (green) “Add” button (below the list of actors - which may be empty at this point). This will add a new entry to the list of actors, you can then type the name (<code class="highlighter-rouge">statement.actor.name</code>) of the actor you’re searchng for in the text box. If the actor’s name doesn’t appear as you type it you probably misspelled their name or they haven’t done anything according to your LRS. <em>Currently</em> the report will filter by the email (<code class="highlighter-rouge">statement.actor.mbox</code>) associated with the actor you’ve selected.</p>
+
+<h4 id="removing-an-actor">Removing an actor</h4>
+<p>Click the (red) minus icon next to the actor. Then select “OK” in the message that pops up.</p>
+
+<h3 id="filter-by-verb">Filter by verb</h3>
+<p>The did category lets you filter by verbs (how actors interacted with activities, i.e. “completed”). Click the (grey) square that says “Did”. You can then add and remove verbs from the list that appears below.</p>
+
+<h4 id="adding-a-verb">Adding a verb</h4>
+<p>Click the (green) “Add” button (below the list of verbs - which may be empty at this point). This will add a new entry to the list of verbs, you can then type the name (<code class="highlighter-rouge">statement.verb.id</code>) of the verb you’re searchng for in the text box.</p>
+
+<h4 id="removing-a-verb">Removing a verb</h4>
+<p>Click the (red) minus icon next to the verb. Then select “OK” in the message that pops up.</p>
+
+<h3 id="filter-by-activity">Filter by activity</h3>
+<p>This category allows you to filter by activities (what people did). Click the (grey) square that says “What”. You can then add and remove “activities” and “activity types” from the lists that appears below.</p>
+
+<h4 id="adding-an-activity-or-activity-type">Adding an activity or activity type</h4>
+<p>Click the (green) “Add” button (below the list you’d like to add to - which may be empty at this point). This will add a new entry to the list, you can then type the name of the “activity” (<code class="highlighter-rouge">statement.object.id</code>) or “activity type” (<code class="highlighter-rouge">statement.object.definition.type</code>) you’re searchng for in the text box.</p>
+
+<h4 id="removing-an-activity-or-activity-type">Removing an activity or activity type</h4>
+<p>Click the (red) minus icon next to the item. Then select “OK” in the message that pops up.</p>
+
+<h3 id="filter-by-context">Filter by context</h3>
+<p>Allows you to filter in terms of the context that activities took place in. Click the (grey) square that says “Where”. You can then add and remove “parent activities”, “grouping activities”, “platforms”, “instructors”, or “languages” from the lists that appears below.</p>
+
+<h4 id="adding-an-activity-or-activity-type-1">Adding an activity or activity type</h4>
+<p>Click the (green) “Add” button (below the list you’d like to add to - which may be empty at this point). This will add a new entry to the list, you can then type the name of the “parent activity” (<code class="highlighter-rouge">statement.context.contextActivities.parent.id</code>), “grouping activiy” (<code class="highlighter-rouge">statement.context.contextActivities.grouping.id</code>), “platform” (<code class="highlighter-rouge">statement.context.platform</code>), “instructor” (<code class="highlighter-rouge">statement.context.instructor</code>), or “language” (<code class="highlighter-rouge">statement.context.language</code>) you’re searchng for in the text box.</p>
+
+<h4 id="removing-an-activity-or-activity-type-1">Removing an activity or activity type</h4>
+<p>Click the (red) minus icon next to the item. Then select “OK” in the message that pops up.</p>
+
+<h3 id="filter-by-result">Filter by result</h3>
+<p>Click the (grey) square that says “With result”. You can then filter by score, success, or completion.</p>
+
+<h4 id="filter-by-score">Filter by score</h4>
+<p>You can set a min (left-most box) and/or a max (right-most box) for each of the scales. You can filter by maximum (max - <code class="highlighter-rouge">statement.result.score.max</code>), minimum (min - <code class="highlighter-rouge">statement.result.score.min</code>), the actual mark (raw - <code class="highlighter-rouge">statement.result.score.raw</code>), and the percentage of the raw mark in relation to the max mark (scaled - <code class="highlighter-rouge">statement.result.score.scaled</code>). Change the min and max by entering a number into the boxes, you can remove these filters by clicking the (red) “Clear” button next to the score.</p>
+
+<h4 id="filter-by-success">Filter by success</h4>
+<p>Success (<code class="highlighter-rouge">statement.result.success</code>) may determine whether a learner was successful in passing a test. Setting this filter to <code class="highlighter-rouge">true</code> will return all the statements that show a successful pass and <code class="highlighter-rouge">false</code> will do the opposite. You can remove this filter by clicking the (red) “Clear” button next to success.</p>
+
+<h4 id="filter-by-completion">Filter by completion</h4>
+<p>Complete (<code class="highlighter-rouge">statement.result.completion</code>) may determine whether a learner completed a test. Setting this filter to <code class="highlighter-rouge">true</code> will return all the statements that show a completed test and <code class="highlighter-rouge">false</code> will do the opposite. You can remove this filter by clicking the (red) “Clear” button next to success.</p>
+
+<h3 id="filter-by-date">Filter by date</h3>
+<p>Click the (grey) square that says “When”. You can then select a since and/or until date which will determine the date (<code class="highlighter-rouge">statement.timestamp</code>) range you’re interested in. Statements that were not made during your date range will not be returned (unless it meets <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#filter-conditions-for-statementrefs">certain conditions regarding statement refs</a>).</p>
+
+<h2 id="view-statements-in-a-graph">View statements in a graph</h2>
+<p>Click the (green) “Graph” button next to the report. From there you will be taken to a page where you can view the statements returned from your report in a graph.</p>
+
+<h2 id="view-statements-in-a-list">View statements in a list</h2>
+<p>Click the (green) “Statements” button next to the report. From there you will be taken to a page where you can view the statements returned from your report in a list.</p>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="docs-footer">
+    <p>Learning Locker and the Squirrel logo are copyright HT2, 2014 | Learning Locker is licensed under GPL 3.0.</p>
+    <p>
+        <a href="#">Back to top</a>
+    </p>
+</footer>
+
+
+    </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Learning Locker Documentation</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Documentation for Learning Locker, the open source learning record store.">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/tomorrow-night.css">
+    <link rel="stylesheet" href="../css/docs.css">
+
+    <script async="" src="//www.google-analytics.com/analytics.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-941797-7', 'learninglocker.net');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript">
+        function prettyCode() {
+            var tables = document.getElementsByTagName('table');
+            for (index = 0; index < tables.length; ++index) {
+                tables[index].className = "table table-default table-bordered";
+            }
+        }
+    </script>
+</head>
+
+
+    <body onload="prettyCode();">
+
+    <div class="docs-masthead">
+    <div class="container">
+        <img src="../images/logo-small.png" class="logo">
+        <nav class="docs-nav pull-right">
+            <a class="docs-nav-item" href="http://learninglocker.net">Website</a>
+            <a class="docs-nav-item" href="https://github.com/learninglocker">Github</a>
+            <a class="docs-nav-item" href="https://github.com/learninglocker/docs">Edit</a>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 docs-sidebar">
+                <div class="sidebar-title">
+                    <a href="../welcome">Getting Started</a>
+                </div>
+                <ul class="nav">
+                    <li><a href="../installation">Installing</a></li>
+                    <li><a href="../troubleshooting">Troubleshooting</a></li>
+                    <li><a href="../upgrading">Upgrading</a></li>
+                    <li><a href="../contribute">Contributing</a></li>
+                    <li><a href="../contributors">Contributors</a></li>
+                </ul>
+                <div class="sidebar-title">
+                    <a href="#">User Interfaces</a>
+                </div>
+                <ul class="nav">
+                    <li><a href="../administration">Administration</a></li>
+                    <li><a href="../reporting">Reports</a></li>
+                    <li><a href="../exporting">Exports</a></li>
+                </ul>
+                <div class="sidebar-title">
+                    <a href="../postman">HTTP Interfaces (APIs)</a>
+                </div>
+                <ul class="nav">
+                    <li><a href="../analytics_api">Analytics</a></li>
+                    <li><a href="../statements_api">Aggregation</a></li>
+                    <li><a href="../report_api">Reports</a></li>
+                    <li><a href="../exports_api">Exports</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-8 docs-main">
+                <h1 id="http-interfaces-apis">HTTP Interfaces (APIs)</h1>
+<p>Each LRS is assigned a unique username and password which should be used via <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP Basic Authentication</a> or <a href="https://github.com/LearningLocker/learninglocker/pull/617">OAuth Authentication</a> when sending requests over HTTP to Learning Locker. You can find your LRS’s credentials via the “Manage clients” link (in the left sidebar). It is important to make sure you employ SSL on production sites and never share your username or password.</p>
+
+<p>If your get <code class="highlighter-rouge">401 unauthorized</code> requests it is posible you have some module config striping the Authorization header, usually for
+“security reasons”. You can work around this issue by passing the header directly to PHP via the env in your apache default config or your virtual host:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;VirtualHost *&gt;
+  ...
+  SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+  ...
+&lt;/VirtualHost&gt;
+</code></pre>
+</div>
+
+<h2 id="postman"><a href="https://www.getpostman.com">Postman</a></h2>
+
+<h3 id="collections">Collections</h3>
+<p>Below are some of the <a href="https://www.getpostman.com/docs/collections">Postman Collections</a> we use internally to test and demonstrate Learning Locker’s APIs.</p>
+
+<ul>
+  <li><a href="https://www.getpostman.com/collections/7a3452d868013026fef6">data/xAPI/statements</a></li>
+  <li><a href="https://www.getpostman.com/collections/680c14a7e5fcd028ae7f">data/xAPI/activities</a></li>
+  <li><a href="https://www.getpostman.com/collections/c6307884d177fbc684e6">data/xAPI/activities/state</a></li>
+  <li><a href="https://www.getpostman.com/collections/8f1ed1a786c2c61bf087">data/xAPI/agents</a></li>
+  <li><a href="https://www.getpostman.com/collections/66623276d9f0c88b06dd">api/v1/exports</a></li>
+  <li><a href="https://www.getpostman.com/collections/c6632fc8938c418492be">api/v1/reports</a></li>
+  <li><a href="https://www.getpostman.com/collections/f013c230a91eefe7f9e3">Statement Refs</a></li>
+  <li><a href="https://www.getpostman.com/collections/42d3a5f0d257045879ba">Statement Voids</a></li>
+</ul>
+
+<blockquote>
+  <p>You can import a collection file. Click on the ‘Import’ button on the top bar, and paste a URL (use the links above) to the collection, or the collection JSON itself, and click ‘Import’.</p>
+</blockquote>
+
+<h3 id="environment">Environment</h3>
+<p>We recommend that you use a <a href="https://www.getpostman.com/docs/environments">Postman Environment</a> to utilise our collections. Each of your environments need the variables below.</p>
+
+<ul>
+  <li>auth</li>
+  <li>version</li>
+  <li>baseUrl</li>
+  <li>iri</li>
+  <li>mbox</li>
+  <li>id</li>
+</ul>
+
+<p>To get started please create a new Postman Enviroment, then modify your environment and select “Bulk edit”. Once inside the bulk edit you can copy the code below and paste it into Postman. Please change <code class="highlighter-rouge">YOUR_AUTH</code> to your <a href="https://www.base64encode.org/">base 64 encoded</a> <a href="#">basic auth details</a> (which can be found under “Manage clients” on the left, inside an LRS on Learning Locker), and <code class="highlighter-rouge">YOUR_ENDPOINT</code> to your endpoint (i.e. “localhost/learninglocker/public”).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>auth: YOUR_AUTH
+version: 1.0.1
+baseUrl: YOUR_ENDPOINT
+iri: http://www.example.com
+mbox: mailto:ex@mple.com
+id: fd590b50-cbc3-11e4-8830-0800200c9a66
+</code></pre>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="docs-footer">
+    <p>Learning Locker and the Squirrel logo are copyright HT2, 2014 | Learning Locker is licensed under GPL 3.0.</p>
+    <p>
+        <a href="#">Back to top</a>
+    </p>
+</footer>
+
+
+    </body>
+</html>
